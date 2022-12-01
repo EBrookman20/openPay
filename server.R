@@ -69,7 +69,7 @@ server <- function(input, output, session) {
     selectInput("city", "Select City", choices = cities)
   })
 
-
+  # 'Select Physician Type' for Emma's Tab
   output$EmmaType <- renderUI({
     selectInput("EmmaType", "Select Physician Type", choices = PrimaryType)
   })
@@ -201,6 +201,7 @@ server <- function(input, output, session) {
       labs(y = "Payment ($US)")
   })
 
+  # output for Emma's Tab
   output$Emma <- renderPlot({
     Emmaplot <- ggplot(data = subset(Emmapayment2, Emmapayment2$physician_primary_type == input$EmmaType), 
                        mapping = aes(x = nature_of_payment_or_transfer_of_value, y = total_amount_of_payment_usdollars)) +
@@ -208,8 +209,8 @@ server <- function(input, output, session) {
       theme(axis.text.x = element_text(angle = 30, hjust = 1)) + 
       xlab("Type of Payment") + ylab("Total Payment Amount (US Dollars)")
     plot(Emmaplot)
-  }, height = 600, width = 1000)
-
+  })
+  # end output for Emma's Tab
 
   output$country <- renderPlot({
     ggplot(df2, aes_string(input$predictors)) +

@@ -50,6 +50,11 @@ fluidPage(
                                  font-size: 17px;
                                  font-style: bold;
                                  font-family: Times New Roman;
+                                 }}"),
+        tags$style("#Emmatxt{color: black;
+                                 font-size: 17px;
+                                 font-style: bold;
+                                 font-family: Times New Roman;
                                  }}")
       ),
       
@@ -119,24 +124,19 @@ fluidPage(
           )
         )
         ),
+        # Emma's Tab
         tabPanel(
-          "Total & Type",
+          "Total Payment & Type",
+          uiOutput("EmmaType"),
+          plotOutput("Emma"),
           verbatimTextOutput("Emmatxt")
-        ),        
+        ),
+        # end Emma's Tab
       tabPanel(
         "Summaries",
         uiOutput("SelectYear"),
         dataTableOutput("Grace_table"),
         verbatimTextOutput("Gracetxt")
-      ),
-        tabPanel(
-          "Total Payment and Type, by Physician Type",
-          uiOutput("EmmaType"),
-          plotOutput("Emma"),
-          "Years",
-          uiOutput("year"),
-          plotOutput("violin_plot"),
-          verbatimTextOutput("txtOutput_Hannah")
         ),
         tabPanel(
           "Payments by Physician",
